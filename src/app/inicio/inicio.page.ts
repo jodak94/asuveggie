@@ -18,7 +18,7 @@ export class InicioPage implements OnInit {
 
   getLocales(){
     this.ls.getLocales().subscribe((data: Local[]) => {
-        this.locales = data;
+        this.locales = data.locales;
         console.log(this.locales)
     });
   }
