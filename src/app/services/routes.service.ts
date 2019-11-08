@@ -1,0 +1,14 @@
+import { Injectable } from '@angular/core';
+@Injectable({
+  providedIn: 'root'
+})
+export class RoutesService {
+
+  constructor() { }
+
+  api_url = 'http://localhost:8000/api/';
+  // api_url = 'https://asuveggie.com.py/api';
+
+  locales_url = this.api_url + 'locales';
+
+}
