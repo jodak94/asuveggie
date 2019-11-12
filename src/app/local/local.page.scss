@@ -1,0 +1,38 @@
+ion-slides {
+  --bullet-background-active: #63913f;
+}
+.slide-img{
+    width: 100%;
+}
+
+.padding{
+  padding: 0px 20px;
+}
+
+.margin-top{
+  margin-top: 10px;
+}
+
+.title{
+  color: #141514;
+}
+
+.descripcion{
+  color: #696969;
+  font-size: 12px;
+}
+
+.info-local{
+  color: #696969;
+  font-size: 12px;
+}
+
+.separator{
+  border-bottom: 1px solid #7CB450;
+  padding: 0px 20px;
+  margin: 10px 0px;
+}
+
+ion-content{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+}

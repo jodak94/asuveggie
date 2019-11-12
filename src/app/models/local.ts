@@ -4,7 +4,13 @@ export class Local {
     destacado: boolean;
     direccion: string;
     nombre: string;
-    telefono: Asignatura;
+    telefono: string;
     logo: string;
-    ciudad: String;
+    nombre_ciudad: String;
+    galeria: String[];
+}
+
+export class LocalResponse {
+    error: boolean;
+    locales: Local[];
 }

@@ -74,4 +74,34 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  //verde oscuro: 63913f
+  //verde claro: 6dab3c
+  //linear-gradient(90deg, rgba(99,145,63,1) 0%, rgba(109,171,60,1) 100%);
+  ion-header{
+    --ion-background-color:linear-gradient(180deg, #63913f 0%, #6dab3c 80%);
+  }
+
+  ion-content{
+    --ion-background-color:#88c658;
+  }
+
+  ion-tab-bar{
+    --ion-background-color:#88c658;
+  }
+
+  ion-tab-button{
+    background:linear-gradient(0deg, #63913f 0%, #6dab3c 80%);
+  }
+
+  
+
+  .tab-selected{
+     color: #a3ed69;
+  }
+
+
+  ion-label{
+    // color: #0d571a;
+  }
 }

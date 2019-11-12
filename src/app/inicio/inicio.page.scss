@@ -1,0 +1,23 @@
+.card1{
+  background: linear-gradient(0deg, #88c658 0%, #a3ed69 80%);;
+}
+
+.card2{
+  background: linear-gradient(90deg, #a3ed69 0%, #88c658 100%);;
+}
+
+.card3{
+  background: linear-gradient(270deg, #a3ed69 0%, #88c658 100%);
+}
+
+
+ion-card-title{
+  color: #666666;
+}
+
+.right-icon{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 25px;
+}

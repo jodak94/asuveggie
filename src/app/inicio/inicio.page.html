@@ -1,16 +1,101 @@
-<ion-header>
+<ion-header class="background">
   <ion-toolbar>
-    <ion-title>inicio</ion-title>
+    <ion-title>Inicio</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="locales">
-  <ion-card *ngFor="let local of locales">
-    <img src="{{local.logo}}" />
-    <ion-card-header>
-      <ion-card-title>{{local.nombre}}</ion-card-title>
-      <ion-card-subtitle>{{local.ciudad}}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>{{local.descripcion}}</ion-card-content>
-  </ion-card>
+  <!-- <img src="{{local.logo}}" /> -->
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let local of locales" size="6">
+        <ion-card class="card1" style="margin:0">
+
+          <img src="../assets/test/c{{local.logo}}.tmp" />
+          <ion-card-header>
+            <ion-card-title>{{local.nombre}}</ion-card-title>
+            <ion-card-subtitle>{{local.nombre_ciudad}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>{{local.direccion}}<br>{{local.telefono}}</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let local of locales" size="6">
+        <ion-card class="card1" style="margin:0">
+          <img src="../assets/test/cu{{local.logo}}.tmp" />
+          <ion-card-header>
+            <ion-card-title>{{local.nombre}}</ion-card-title>
+            <ion-card-subtitle>{{local.nombre_ciudad}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>{{local.direccion}}<br>{{local.telefono}}</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <!-- <ion-grid>
+    <ion-card style="padding: 0" *ngFor="let local of locales">
+        <ion-row style="padding: 0">
+          <ion-col size="4" style="padding: 0">
+            <img src="../assets/test/cu{{local.logo}}.tmp" />
+          </ion-col>
+          <ion-col class="card2" size="8">
+            <ion-card-content>{{local.nombre}} - {{local.nombre_ciudad}} <br>{{local.direccion}}<br>{{local.telefono}}</ion-card-content>
+          </ion-col>
+        </ion-row>
+    </ion-card>
+  </ion-grid> -->
+
+  <ion-grid>
+    <ion-card style="padding: 0" *ngFor="let local of locales">
+        <ion-row style="padding: 0">
+          <ion-col size="4" style="padding: 0">
+            <img src="{{local.logo}}" />
+          </ion-col>
+          <ion-col class="card3" size="8">
+            <ion-card-content style="padding: 0;">{{local.nombre}} - {{local.nombre_ciudad}} <br>{{local.direccion}}<br>{{local.telefono}}</ion-card-content>
+            <ion-icon class="right-icon" (click)="irALocal(local)" name="ios-arrow-dropright"></ion-icon>
+          </ion-col>
+        </ion-row>
+    </ion-card>
+  </ion-grid>
+
+  <!-- <ion-grid>
+    <ion-card style="padding: 0">
+        <ion-row style="padding: 0">
+          <ion-col size="4" style="padding: 0">
+            <img src="../assets/test/cu{{locales[0].logo}}.tmp" />
+          </ion-col>
+          <ion-col class="card3" size="8">
+            <ion-card-content>{{locales[0].nombre}} - {{locales[0].nombre_ciudad}} <br>{{locales[0].direccion}}<br>{{locales[0].telefono}}</ion-card-content>
+          </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card style="padding: 0">
+        <ion-row style="padding: 0">
+          <ion-col size="4" style="padding: 0">
+            <img src="../assets/test/cu{{locales[1].logo}}.tmp" />
+          </ion-col>
+          <ion-col class="card2" size="8">
+            <ion-card-content>{{locales[1].nombre}} - {{locales[1].nombre_ciudad}} <br>{{locales[1].direccion}}<br>{{locales[1].telefono}}</ion-card-content>
+          </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card style="padding: 0">
+        <ion-row style="padding: 0">
+          <ion-col size="4" style="padding: 0">
+            <img src="../assets/test/cu{{locales[2].logo}}.tmp" />
+          </ion-col>
+          <ion-col class="card3" size="8">
+            <ion-card-content>{{locales[2].nombre}} - {{locales[2].nombre_ciudad}} <br>{{locales[2].direccion}}<br>{{locales[2].telefono}}</ion-card-content>
+          </ion-col>
+        </ion-row>
+    </ion-card>
+  </ion-grid> -->
+
+
 </ion-content>
