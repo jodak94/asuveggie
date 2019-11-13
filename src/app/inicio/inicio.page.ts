@@ -52,6 +52,8 @@ export class InicioPage implements OnInit {
       "../assets/test/g3.tmp",
       "../assets/test/g4.tmp"
     ];
+    l.latitud = "-25.293517541643798";
+    l.longitud = "-57.61861324310303";
     this.locales.push(l);
 
     l = new Local();
@@ -61,6 +63,14 @@ export class InicioPage implements OnInit {
     l.descripcion = "Local vegano / vegetariano ubicado en el centro de Asunción, pasa a disfrutar de una momento increible acompañado de excelente comida."
     l.logo = "../assets/test/cu2.tmp";
     l.telefono = "0961547831";
+    l.galeria = [
+      "../assets/test/g1.tmp",
+      "../assets/test/g2.tmp",
+      "../assets/test/g3.tmp",
+      "../assets/test/g4.tmp"
+    ];
+    l.latitud = "-25.293517541643798";
+    l.longitud = "-57.61861324310303";
     this.locales.push(l);
 
     l = new Local();
@@ -70,6 +80,14 @@ export class InicioPage implements OnInit {
     l.descripcion = "Local vegano / vegetariano ubicado en el centro de Asunción, pasa a disfrutar de una momento increible acompañado de excelente comida."
     l.logo = "../assets/test/cu3.tmp";
     l.telefono = "0581324456";
+    l.galeria = [
+      "../assets/test/g1.tmp",
+      "../assets/test/g2.tmp",
+      "../assets/test/g3.tmp",
+      "../assets/test/g4.tmp"
+    ];
+    l.latitud = "-25.293517541643798";
+    l.longitud = "-57.61861324310303";
     this.locales.push(l);
   }
 }

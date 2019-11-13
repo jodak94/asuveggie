@@ -80,10 +80,11 @@
   //linear-gradient(90deg, rgba(99,145,63,1) 0%, rgba(109,171,60,1) 100%);
   ion-header{
     --ion-background-color:linear-gradient(180deg, #63913f 0%, #6dab3c 80%);
+    color: #e9e2d9;
   }
 
   ion-content{
-    --ion-background-color:#88c658;
+    --ion-background-color:#f2f1f0;
   }
 
   ion-tab-bar{
@@ -94,10 +95,21 @@
     background:linear-gradient(0deg, #63913f 0%, #6dab3c 80%);
   }
 
-  
+  // ion-title{
+  //   color: #e9e2d9;
+  // }
+
+  ion-toolbar{
+    color: #e9e2d9;
+  }
 
   .tab-selected{
-     color: #a3ed69;
+     // color: #a3ed69;
+     color: #e9e2d9;
+  }
+
+  ion-tab-button{
+       color: #737373;
   }
 
 

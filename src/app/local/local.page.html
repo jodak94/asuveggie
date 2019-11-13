@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -26,8 +27,22 @@
       <b>Ciudad: </b>{{local.nombre_ciudad}}<br>
       <b>Dirección: </b>{{local.direccion}}<br>
     </div>
-    <div class="mapa">
-
-    </div>
+  </div>
+  <div class="margin-top">
+    <div id="map" height="100%" width="270px"></div>
+  </div>
+  <div class="center margin-top">
+    <ion-button (blick)="openOnGoogleMaps()" class="maps-button">Abrir en google maps</ion-button>
   </div>
 </ion-content>
+
+<!-- <ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="{{tab.tab}}" *ngFor="let tab of tabs">
+      <ion-icon name="{{tab.icon}}"></ion-icon>
+      <ion-label>{{tab.titulo}}</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs> -->

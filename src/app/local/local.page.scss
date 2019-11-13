@@ -1,5 +1,5 @@
 ion-slides {
-  --bullet-background-active: #63913f;
+  --bullet-background-active: #e9e2d9;
 }
 .slide-img{
     width: 100%;
@@ -28,11 +28,25 @@ ion-slides {
 }
 
 .separator{
-  border-bottom: 1px solid #7CB450;
+  border-bottom: 2px solid #e9e2d9;
   padding: 0px 20px;
   margin: 10px 0px;
 }
 
 ion-content{
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+}
+
+#map{
+  width: 100%!important;
+  height: 270px!important;
+}
+
+.maps-button{
+  --background: linear-gradient(180deg, #63913f 0%, #6dab3c 80%);
+  --border-radius: 15px;
+}
+
+.center{
+  text-align: center;
 }

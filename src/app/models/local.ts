@@ -8,6 +8,8 @@ export class Local {
     logo: string;
     nombre_ciudad: String;
     galeria: String[];
+    latitud: String;
+    longitud: String;
 }
 
 export class LocalResponse {

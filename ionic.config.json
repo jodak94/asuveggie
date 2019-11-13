@@ -1,5 +1,7 @@
 {
   "name": "asuveggie",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
