@@ -1,3 +1,5 @@
+import { Horario } from './horario';
+
 export class Local {
     id: number;
     descripcion: string;
@@ -6,13 +8,19 @@ export class Local {
     nombre: string;
     telefono: string;
     logo: string;
-    nombre_ciudad: String;
-    galeria: String[];
-    latitud: String;
-    longitud: String;
+    nombre_ciudad: string;
+    galeria: string[];
+    latitud: string;
+    longitud: string;
+    horarios: Horario[];
+}
+
+export class LocalesResponse {
+    error: boolean;
+    locales: Local[];
 }
 
 export class LocalResponse {
     error: boolean;
-    locales: Local[];
+    local: Local;
 }

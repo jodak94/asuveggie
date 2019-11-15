@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -8,33 +7,41 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="local">
-  <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide *ngFor="let img of local.galeria">
-      <img class="slide-img" src="{{img}}" />
-    </ion-slide>
-  </ion-slides>
-  <div class="detalle margin-top padding">
-    <div class="title">
-      <b>{{local.nombre}}</b>
-    </div>
-    <div class="descripcion margin-top">
-      {{local.descripcion}}
-    </div>
-    <div class="separator"></div>
-    <div class="info-local margin-top">
-      <b>Teléfono: </b>{{local.telefono}}<br>
-      <b>Ciudad: </b>{{local.nombre_ciudad}}<br>
-      <b>Dirección: </b>{{local.direccion}}<br>
+<ion-content>
+  <div *ngIf="local">
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide *ngFor="let img of local.galeria">
+        <img class="slide-img" src="{{img}}" />
+      </ion-slide>
+    </ion-slides>
+    <div class="detalle margin-top padding">
+      <div class="title">
+        <b>{{local.nombre}}</b>
+      </div>
+      <div class="descripcion margin-top">
+        {{local.descripcion}}
+      </div>
+      <div class="separator"></div>
+      <div class="info-local margin-top">
+        <div class="margin-bottom center">
+          <div *ngFor="let h of local.horarios" class="capitalize">
+            {{h.dia}} de {{h.hora_inicio}} a {{h.hora_fin}}
+          </div>
+        </div>
+        <b>Teléfono: </b>{{local.telefono}}<br>
+        <b>Ciudad: </b>{{local.nombre_ciudad}}<br>
+        <b>Dirección: </b>{{local.direccion}}<br>
+      </div>
     </div>
   </div>
-  <div class="margin-top">
-    <div id="map" height="100%" width="270px"></div>
+  <div class="margin-top margin-bottom">
+    <div id="map"></div>
   </div>
   <div class="center margin-top">
-    <ion-button (blick)="openOnGoogleMaps()" class="maps-button">Abrir en google maps</ion-button>
+    <ion-button (click)="openOnGoogleMaps()" class="maps-button">Abrir en google maps</ion-button>
   </div>
 </ion-content>
+
 
 <!-- <ion-tabs>
 

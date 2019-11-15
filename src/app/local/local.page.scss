@@ -37,9 +37,12 @@ ion-content{
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
 }
 
+.margin-bottom{
+  margin-bottom: 10px;
+}
 #map{
-  width: 100%!important;
-  height: 270px!important;
+  width: 100%;
+  height: 270px;
 }
 
 .maps-button{
@@ -49,4 +52,8 @@ ion-content{
 
 .center{
   text-align: center;
+}
+
+.capitalize:first-letter{
+  text-transform: capitalize;
 }

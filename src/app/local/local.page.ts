@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { Local } from '../models/Local';
+import { Local, LocalResponse } from '../models/Local';
 import { Map, tileLayer, marker, icon } from 'leaflet';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
+import { LocalesService } from '../services/locales.service';
 
 @Component({
   selector: 'app-local',
@@ -15,30 +15,53 @@ import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-na
 export class LocalPage implements OnInit {
 
   local: Local;
+  response: LocalResponse;
+  latitud: string;
+  longitud: string;
+  mapa: Map;
 
-  constructor(public http: HttpClient, private route: ActivatedRoute, private router: Router, public plt: Platform, private launchNavigator: LaunchNavigator) {
+  constructor(public ls: LocalesService, public http: HttpClient, private route: ActivatedRoute, private router: Router, public plt: Platform, private launchNavigator: LaunchNavigator) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.local = this.router.getCurrentNavigation().extras.state.local;
+        let local_id = this.router.getCurrentNavigation().extras.state.local.id;
+        this.latitud = this.router.getCurrentNavigation().extras.state.local.latitud;
+        this.longitud = this.router.getCurrentNavigation().extras.state.local.longitud;
+        this.getLocal(local_id);
       }
     });
   }
 
-  ngAfterViewInit() {
+  getLocal(local_id){
+    this.ls.getLocal(local_id).subscribe((data) => {
+        this.response = data;
+        if(this.response.error)
+          console.log("error")
+        else
+          this.local = data.local;
+
+    });
+  }
+
+  ionViewDidEnter() {
+    console.log("ionViewDidEnter")
     this.initMap()
   }
 
-  options: LaunchNavigatorOptions = {
-    start: 'London, ON',
-    app: LaunchNavigator.APPS.UBER
+  ngOnAfterViewInit(){
+    console.log("ngOnAfterViewInit")
+  }
+
+  ionViewWillLeave() {
+    console.log("ionViewWillLeave")
+    console.log(this.mapa)
+    this.mapa.remove();
   }
 
   initMap() {
-    console.log("initMap")
-    const map = new Map('map').setView([this.local.latitud, this.local.longitud], 15);
+    this.mapa = new Map('map').setView([this.latitud, this.longitud], 15);
     tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    }).addTo(this.mapa);
 
     const customMarkerIcon = icon({
       iconUrl: '../assets/icon/marker-icon.png',
@@ -46,18 +69,16 @@ export class LocalPage implements OnInit {
       popupAnchor: [0, -20]
     });
 
-    marker([this.local.latitud, this.local.longitud], {icon: customMarkerIcon})
+    marker([this.latitud, this.longitud], {icon: customMarkerIcon})
     // .bindPopup(`<b style='font-size:"10px"'>Google maps</b>`, { autoClose: false })
     .on('click', () => console.log("abrir google maps"))
-    .addTo(map).openPopup();
-
-
+    .addTo(this.mapa).openPopup();
   }
 
+
+
   openOnGoogleMaps(){
-    console.log("openOnGoogleMaps");
-    return
-    this.launchNavigator.navigate('Toronto, ON', options)
+    this.launchNavigator.navigate([+this.local.latitud, +this.local.longitud])
     .then(
       success => console.log('Launched navigator'),
       error => console.log('Error launching navigator', error)

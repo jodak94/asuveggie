@@ -10,5 +10,6 @@ export class RoutesService {
   // api_url = 'https://asuveggie.com.py/api';
 
   locales_url = this.api_url + 'locales';
+  local_url = this.api_url + 'locales/detail'
 
 }

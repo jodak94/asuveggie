@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalesService } from '../services/locales.service';
-import { LocalResponse, Local } from '../models/Local';
+import { LocalesResponse, Local } from '../models/Local';
 import { Router, NavigationExtras } from '@angular/router';
 @Component({
   selector: 'app-inicio',
@@ -12,12 +12,12 @@ export class InicioPage implements OnInit {
   constructor(private ls: LocalesService, private router: Router) { }
 
   ngOnInit() {
-    // this.getLocales()
-    this.cargaLocal();
+    this.getLocales()
+    // this.cargaLocal();
   }
 
   locales: Local[] = []
-  response: LocalResponse;
+  response: LocalesResponse;
 
   getLocales(){
     this.ls.getLocales().subscribe((data) => {
