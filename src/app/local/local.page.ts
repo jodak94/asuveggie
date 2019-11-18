@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { Local, LocalResponse } from '../models/Local';
+import { Horario } from '../models/Horario';
 import { Map, tileLayer, marker, icon } from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
@@ -26,9 +27,46 @@ export class LocalPage implements OnInit {
         let local_id = this.router.getCurrentNavigation().extras.state.local.id;
         this.latitud = this.router.getCurrentNavigation().extras.state.local.latitud;
         this.longitud = this.router.getCurrentNavigation().extras.state.local.longitud;
-        this.getLocal(local_id);
+        // this.getLocal(local_id);
+        this.getLocalTest();
       }
     });
+  }
+
+  getLocalTest(){
+    var l = new Local();
+    l.nombre = "Vegan";
+    l.nombre_ciudad = "Villa Elisa";
+    l.direccion = "Pedro Peralta 138";
+    l.descripcion = "Local vegano / vegetariano ubicado en el centro de Asunción, pasa a disfrutar de una momento increible acompañado de excelente comida."
+    l.logo = "../assets/test/cu1.tmp";
+    l.telefono = "0972195087";
+    l.galeria = [
+      "../assets/test/g1.tmp",
+      "../assets/test/g2.tmp",
+      "../assets/test/g3.tmp",
+      "../assets/test/g4.tmp"
+    ];
+    l.latitud = "-25.293517541643798";
+    l.longitud = "-57.61861324310303";
+
+    // locales: Local[] = []
+    var hs: Horario[] = []
+    var h = new Horario();
+    h.dia = "Lunes a viernes";
+    h.hora_fin = "12:00";
+    h.hora_inicio = "23:30";
+    hs.push(h);
+
+    h = new Horario();
+    h.dia = "Sábados";
+    h.hora_fin = "18:00";
+    h.hora_inicio = "23:30";
+    hs.push(h);
+
+    l.horarios = hs;
+
+    this.local = l;
   }
 
   getLocal(local_id){

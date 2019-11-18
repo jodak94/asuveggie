@@ -28,12 +28,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'mapa',
+        path: 'contacto',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../mapa/mapa.module').then(m => m.MapaPageModule)
+              import('../contacto/contacto.module').then(m => m.ContactoPageModule)
           }
         ]
       },

@@ -12,6 +12,6 @@ export class TabsPage {
   tabs = [
     {'titulo': 'Inicio', 'tab': 'inicio', 'icon': 'home'},
     {'titulo': 'Publicaciones', 'tab': 'publicaciones', 'icon': 'megaphone'},
-    {'titulo': 'Mapa', 'tab': 'mapa', 'icon': 'map'}
+    {'titulo': 'Contacto', 'tab': 'contacto', 'icon': 'contact'}
   ]
 }

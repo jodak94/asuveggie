@@ -12,8 +12,8 @@ export class InicioPage implements OnInit {
   constructor(private ls: LocalesService, private router: Router) { }
 
   ngOnInit() {
-    this.getLocales()
-    // this.cargaLocal();
+    // this.getLocales()
+    this.cargaLocal();
   }
 
   locales: Local[] = []
