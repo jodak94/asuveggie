@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>publicaciones</ion-title>
+    <ion-title>Publicaciones</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let p of publicaciones" (click)="irALocal(p.local)">
+    <img src="{{p.img}}" />
+    <ion-card-header>
+      <ion-card-subtitle>{{p.local.nombre_ciudad}}</ion-card-subtitle>
+      <!-- <ion-card-subtitle>{{p.local.ciudad.nombre}}</ion-card-subtitle> -->
+      <ion-card-title>{{p.local.nombre}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="p.texto">
+      {{p.texto}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
