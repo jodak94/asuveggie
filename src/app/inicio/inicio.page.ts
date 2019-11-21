@@ -12,20 +12,34 @@ export class InicioPage implements OnInit {
   constructor(private ls: LocalesService, private router: Router) { }
 
   ngOnInit() {
-    // this.getLocales()
-    this.cargaLocal();
+    this.column = Math.floor(Math.random() * this.cc);
+    this.dir = this.dirs[Math.round(Math.random())];
+    this.getLocales()
+    // this.cargaLocal();
   }
 
   locales: Local[] = []
   response: LocalesResponse;
+  skip = 0;
+  take = 4;
+  column = 0;
+  cc = 8; //Max no incluye
+  dir = '';
+  dirs = ['ASC', 'DESC']
 
-  getLocales(){
-    this.ls.getLocales().subscribe((data) => {
+  getLocales(event = null){
+    this.ls.getLocales(this.skip, this.take, this.column, this.dir).subscribe((data) => {
         this.response = data;
         if(this.response.error)
           console.log("error")
         else
-          this.locales = data.locales;
+          if(this.skip == 0)
+            this.locales = data.locales
+          else
+            this.locales = this.locales.concat(data.locales);
+
+          if(event != null)
+            event.target.complete();
     });
   }
 
@@ -36,6 +50,18 @@ export class InicioPage implements OnInit {
       }
     };
     this.router.navigate(['local'], navigationExtras);
+  }
+
+  recargar(event){
+    this.column = Math.floor(Math.random() * this.cc);
+    this.dir = this.dirs[Math.round(Math.random())];
+    this.skip = 0;
+    this.getLocales(event);
+  }
+
+  loadData(event){
+    this.skip += this.take;
+    this.getLocales(event);
   }
 
   cargaLocal(){

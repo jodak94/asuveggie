@@ -13,23 +13,30 @@ export class PublicacionesPage implements OnInit {
 
   publicaciones: Publicacion[] = []
   response: PublicacionesResponse;
+  skip = 0;
+  take = 2;
 
   constructor(public ps: PublicacionesService, private router: Router) {
-    // this.getPublicaciones();
-    this.cargaLocal()
+    this.getPublicaciones();
+    // this.cargaLocal()
   }
 
   ngOnInit() {
   }
 
-  getPublicaciones(){
-    this.ps.getPublicaciones().subscribe((data) => {
+  getPublicaciones(event = null){
+    this.ps.getPublicaciones(this.skip, this.take).subscribe((data) => {
         this.response = data;
         if(this.response.error)
           console.log("error")
-        else
-          this.publicaciones = data.publicaciones;
-        console.log(data);
+        else{
+          if(this.skip == 0)
+            this.publicaciones = data.publicaciones
+          else
+            this.publicaciones = this.publicaciones.concat(data.publicaciones);
+        }
+        if(event != null)
+          event.target.complete();
     });
   }
 
@@ -40,6 +47,16 @@ export class PublicacionesPage implements OnInit {
       }
     };
     this.router.navigate(['local'], navigationExtras);
+  }
+
+  recargar(event){
+    this.skip = 0;
+    this.getPublicaciones(event);
+  }
+
+  loadData(event){
+    this.skip += this.take;
+    this.getPublicaciones(event);
   }
 
   cargaLocal(){
@@ -71,17 +88,16 @@ export class PublicacionesPage implements OnInit {
     ws.longitud = "-57.644534111022956";
     ws.id = 33;
 
-
     var p = new Publicacion();
-    p.local = lm;
-    p.texto = null;
-    p.img = "../assets/test/p1.tmp";
-    this.publicaciones.push(p);
-
-    p = new Publicacion();
     p.local = sc;
     p.texto = "Hoy Almorzamos milanesa vegetal (de arvejas y arroz integral) a la napolitana, con ensalada rusa. Podes hacer tu pedido hasta las 10 hs, para pasar a retirar o te enviamos por delivery, el costo de entrega es de 5 mil gs hasta 5 km a la redonda, reservá al 0971317384, gracias!!";
     p.img = "../assets/test/p2.tmp";
+    this.publicaciones.push(p);
+
+    p = new Publicacion();
+    p.local = lm;
+    p.texto = null;
+    p.img = "../assets/test/p1.tmp";
     this.publicaciones.push(p);
 
     p = new Publicacion();

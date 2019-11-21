@@ -5,6 +5,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+    <ion-refresher-content
+    refreshingSpinner="bubbles">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-card *ngFor="let p of publicaciones" (click)="irALocal(p.local)">
     <img src="{{p.img}}" />
     <ion-card-header>
@@ -16,4 +21,9 @@
       {{p.texto}}
     </ion-card-content>
   </ion-card>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

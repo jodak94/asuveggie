@@ -10,7 +10,7 @@ export class PublicacionesService {
 
   constructor(private rs: RoutesService, private http: HttpClient) { }
 
-  getPublicaciones(){
-    return this.http.get<PublicacionesResponse>(this.rs.publicaciones_url);
+  getPublicaciones(skip, take){
+    return this.http.get<PublicacionesResponse>(this.rs.publicaciones_url + '?skip=' + skip + '&take=' + take);
   }
 }

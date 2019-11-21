@@ -6,6 +6,11 @@
 </ion-header>
 
 <ion-content *ngIf="locales">
+  <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+    <ion-refresher-content
+    refreshingSpinner="bubbles">
+    </ion-refresher-content>
+  </ion-refresher>
   <!-- <img src="{{local.logo}}" /> -->
   <!-- <ion-grid>
     <ion-row>
@@ -97,6 +102,9 @@
         </ion-row>
     </ion-card>
   </ion-grid> -->
-
-
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

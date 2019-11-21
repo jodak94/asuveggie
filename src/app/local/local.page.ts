@@ -27,8 +27,8 @@ export class LocalPage implements OnInit {
         let local_id = this.router.getCurrentNavigation().extras.state.local.id;
         this.latitud = this.router.getCurrentNavigation().extras.state.local.latitud;
         this.longitud = this.router.getCurrentNavigation().extras.state.local.longitud;
-        // this.getLocal(local_id);
-        this.getLocalTest();
+        this.getLocal(local_id);
+        // this.getLocalTest();
       }
     });
   }

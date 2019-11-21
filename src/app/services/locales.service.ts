@@ -10,8 +10,8 @@ export class LocalesService {
 
   constructor(private rs: RoutesService, private http: HttpClient) {}
 
-  getLocales(){
-    return this.http.get<LocalesResponse>(this.rs.locales_url);
+  getLocales(skip, take, column, dir){
+    return this.http.get<LocalesResponse>(this.rs.locales_url + '?skip=' + skip + '&take=' + take + '&column=' + column + '&dir=' + dir);
   }
 
   getLocal(local_id){
