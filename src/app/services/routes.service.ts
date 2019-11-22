@@ -12,5 +12,6 @@ export class RoutesService {
   locales_url = this.api_url + 'locales';
   local_url = this.api_url + 'locales/detail'
   publicaciones_url = this.api_url + 'publicaciones';
+  contacto_url = this.api_url + 'contacto';
 
 }

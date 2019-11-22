@@ -1,9 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>contacto</ion-title>
+    <ion-title>Contacto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form onsubmit="processForm(event)">
+      <ion-list lines="full">
+        <ion-row>
+          <ion-col size="12">
+            <div class="text-container">
+              Queres formar parte de Asuveggie, enviarnos una sugerecia o reportar algún inconveniente?. Llena el formulario y nos pondremos en contacto.
+            </div>
+          </ion-col>
+          <ion-col size="12">
+            <ion-input class="contact-input" required type="text" placeholder="Nombre *" name="nombre" [(ngModel)]="data.nombre"></ion-input>
+          </ion-col>
+          <ion-col size="12">
+            <ion-input class="contact-input" type="text" placeholder="Teléfono" name="telefono" [(ngModel)]="data.telefono"></ion-input>
+          </ion-col>
+          <ion-col size="12">
+            <ion-input class="contact-input" type="text" placeholder="Email" name="email" [(ngModel)]="data.email"></ion-input>
+          </ion-col>
+          <ion-col size="12">
+            <ion-textarea rows="4" class="contact-input" type="text"  placeholder="Mensaje *" name="message" [(ngModel)]="data.message"></ion-textarea>
+          </ion-col>
+          <ion-col size="12">
+            <div class="ion-padding">
+              <ion-button (click)="submit()" class="custom-button" expand="block">Enviar</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-list>
 
+    </form>
 </ion-content>

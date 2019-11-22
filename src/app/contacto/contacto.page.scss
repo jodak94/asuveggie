@@ -1,0 +1,37 @@
+.contact-input{
+  background-color: #D4E1CA;
+  border-radius: 5px;
+  width: 90%;
+  margin: auto;
+}
+
+input::placeholder{
+  font-size: 5px;
+}
+
+ion-input::placeholder{
+  font-size: 5px;
+}
+
+.custom-button{
+  --background: linear-gradient(180deg, #63913f 0%, #6dab3c 80%);
+  --border-radius: 15px;
+}
+
+ion-input{
+  --color: #545454;
+  font-size: 14px;
+}
+
+ion-textarea{
+  --color: #545454;
+  font-size: 14px;
+}
+
+.text-container{
+  width: 90%;
+  margin: auto;
+  font-size: 14px;
+  color: #737373;
+  margin-bottom: 10px;
+}
