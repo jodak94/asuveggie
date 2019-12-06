@@ -27,6 +27,7 @@ export class PublicacionesPage implements OnInit {
   getPublicaciones(event = null){
     this.ps.getPublicaciones(this.skip, this.take).subscribe((data) => {
         this.response = data;
+        console.log(data)
         if(this.response.error)
           console.log("error")
         else{

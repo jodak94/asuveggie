@@ -57,6 +57,17 @@
   </ion-grid> -->
 
   <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Ciudad</ion-label>
+          <ion-select ok-text="Aceptar" cancel-text="Cancelar" [(ngModel)]="ciudad_id" (ionChange)="filtrar($event)">
+            <ion-select-option value="0">---</ion-select-option>
+            <ion-select-option *ngFor="let c of ciudades" value="{{c.id}}">{{c.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
     <ion-card style="padding: 0" *ngFor="let local of locales">
         <ion-row style="padding: 0">
           <ion-col size="4" style="padding: 0">

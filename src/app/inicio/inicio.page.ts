@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalesService } from '../services/locales.service';
 import { LocalesResponse, Local } from '../models/Local';
 import { Router, NavigationExtras } from '@angular/router';
+import { Ciudad } from '../models/Ciudad';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
@@ -14,11 +15,14 @@ export class InicioPage implements OnInit {
   ngOnInit() {
     this.column = Math.floor(Math.random() * this.cc);
     this.dir = this.dirs[Math.round(Math.random())];
+    this.getCiudades();
     this.getLocales()
     // this.cargaLocal();
   }
 
-  locales: Local[] = []
+  locales: Local[] = [];
+  ciudades: Ciudad[] = [];
+  ciudad_id: String = '';
   response: LocalesResponse;
   skip = 0;
   take = 4;
@@ -27,8 +31,15 @@ export class InicioPage implements OnInit {
   dir = '';
   dirs = ['ASC', 'DESC']
 
+  getCiudades(){
+      this.ls.getCiudades().subscribe((data) => {
+        this.ciudades = data.ciudades;
+      })
+  }
+
   getLocales(event = null){
-    this.ls.getLocales(this.skip, this.take, this.column, this.dir).subscribe((data) => {
+    console.log(this.ciudad_id);
+    this.ls.getLocales(this.skip, this.take, this.column, this.dir, this.ciudad_id).subscribe((data) => {
         this.response = data;
         if(this.response.error)
           console.log("error")
@@ -52,10 +63,18 @@ export class InicioPage implements OnInit {
     this.router.navigate(['local'], navigationExtras);
   }
 
+  filtrar(event){
+    this.column = Math.floor(Math.random() * this.cc);
+    this.dir = this.dirs[Math.round(Math.random())];
+    this.skip = 0;
+    this.getLocales();
+  }
+
   recargar(event){
     this.column = Math.floor(Math.random() * this.cc);
     this.dir = this.dirs[Math.round(Math.random())];
     this.skip = 0;
+    this.ciudad_id = 0;
     this.getLocales(event);
   }
 
